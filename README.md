@@ -1,6 +1,8 @@
 Backbone Computed Properties
 ============================
 
+This is very much a work in progress. Pull requests are welcome!
+
 ### Install
 
 Grab _backbone-computed.js_ from the _src_ directory and include it on your page.
@@ -23,6 +25,7 @@ var david = new Person({
   last: 'Tang'
 });
 
+david.get('fullName'); // David Tang
 david.set({ last: 'Doe' });
 david.get('fullName'); // David Doe
 david.set({ first: 'David', last: 'Tang' });
