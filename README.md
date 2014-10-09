@@ -22,4 +22,9 @@ var david = new Person({
   first: 'David',
   last: 'Tang'
 });
+
+david.set({ last: 'Doe' });
+david.get('fullName'); // David Doe
+david.set({ first: 'David', last: 'Tang' });
+david.get('fullName'); // David Tang
 ```
