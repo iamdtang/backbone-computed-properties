@@ -1,7 +1,7 @@
 Backbone Computed Properties
 ============================
 
-This is very much a work in progress. Pull requests are welcome!
+Ember-style computed properties for Backbone models. This is very much a work in progress. Pull requests are welcome!
 
 ### Install
 
