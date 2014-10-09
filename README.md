@@ -13,7 +13,7 @@ Grab _backbone-computed.js_ from the _src_ directory and include it on your page
 
 ```js
 var Person = Backbone.Model.extend({
-  fullName: new Backbone.Computed('first', 'last', function() {
+  fullName: Backbone.Computed('first', 'last', function() {
     return this.get('first') + ' ' + this.get('last');
   })
 });

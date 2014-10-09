@@ -1,10 +1,12 @@
 (function(Backbone) {
 
-	Backbone.Computed = function() {
+	Backbone.Computed = function(args) {
 		if (this instanceof Backbone.Computed) {
-			var args = Array.prototype.slice.call(arguments, 0);
+			args = Array.prototype.slice.call(args, 0);
 	    this.computedFunction = args[args.length - 1];
 	    this.dep = args.slice(0, -1);
+		} else {
+			return new Backbone.Computed(arguments);
 		}
 	};
 

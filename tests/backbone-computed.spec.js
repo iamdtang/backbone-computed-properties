@@ -4,7 +4,7 @@ describe('Backbone.Computed', function() {
 
   beforeEach(function() {
     Person = Backbone.Model.extend({
-      fullName: new Backbone.Computed('first', 'last', function() {
+      fullName: Backbone.Computed('first', 'last', function() {
         return this.get('first') + ' ' + this.get('last');
       })
     });
