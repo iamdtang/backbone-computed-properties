@@ -34,7 +34,7 @@ david.get('fullName'); // David Tang
 
 ### Chaining Computed Properties
 
-You can use computed properties as values to create new computed properties. Let's add a _username_ computed property to the previous example, and use the existing _fullName_ property and add in some other properties:
+You can use computed properties as values to create new computed properties. Let's add a _username_ computed property to the previous example, and use the existing _fullName_ computed property:
 
 ```js
 var Person = Backbone.Model.extend({
