@@ -31,3 +31,26 @@ david.get('fullName'); // David Doe
 david.set({ first: 'David', last: 'Tang' });
 david.get('fullName'); // David Tang
 ```
+
+### Chaining Computed Properties
+
+```js
+Person = Backbone.Model.extend({
+  fullName: Backbone.Computed('first', 'last', function() {
+    return this.get('first') + ' ' + this.get('last');
+  }),
+
+  username: Backbone.Computed('fullName', function() {
+    return this.get('fullName').replace(/\s/g, '').toLowerCase();
+  })
+});
+
+david = new Person({
+  first: 'David',
+  last: 'Tang'
+});
+
+david.get('username'); // davidtang
+david.set({ last: 'Doe' });
+david.get('username')); // daviddoe
+```

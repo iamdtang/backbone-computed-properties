@@ -25,4 +25,25 @@ describe('Backbone.Computed', function() {
     david.set({ first: 'David', last: 'Tang' });
     expect(david.get('fullName')).toEqual('David Tang');
   });
+
+  it('should allow computed properties to depend on other computed properties', function() {
+    Person = Backbone.Model.extend({
+      fullName: Backbone.Computed('first', 'last', function() {
+        return this.get('first') + ' ' + this.get('last');
+      }),
+
+      username: Backbone.Computed('fullName', function() {
+        return this.get('fullName').replace(/\s/g, '').toLowerCase();
+      })
+    });
+
+    david = new Person({
+      first: 'David',
+      last: 'Tang'
+    });
+
+    expect(david.get('username')).toEqual('davidtang');
+    david.set({ last: 'Doe' });
+    expect(david.get('username')).toEqual('daviddoe');
+  });
 });
