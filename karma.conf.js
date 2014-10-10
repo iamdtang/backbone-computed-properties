@@ -12,9 +12,8 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            { pattern: 'lib/jquery-1.11.1.js' },
-            { pattern: 'lib/underscore.js' },
-            { pattern: 'lib/backbone.js' },
+            { pattern: 'bower_components/underscore/underscore.js' },
+            { pattern: 'bower_components/backbone/backbone.js' },
             { pattern: 'src/*.js' },
             { pattern: 'tests/*.spec.js' }
         ],
