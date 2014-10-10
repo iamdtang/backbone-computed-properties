@@ -35,7 +35,7 @@ david.get('fullName'); // David Tang
 ### Chaining Computed Properties
 
 ```js
-Person = Backbone.Model.extend({
+var Person = Backbone.Model.extend({
   fullName: Backbone.Computed('first', 'last', function() {
     return this.get('first') + ' ' + this.get('last');
   }),
@@ -45,7 +45,7 @@ Person = Backbone.Model.extend({
   })
 });
 
-david = new Person({
+var david = new Person({
   first: 'David',
   last: 'Tang'
 });
