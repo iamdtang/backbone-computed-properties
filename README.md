@@ -1,6 +1,8 @@
 Backbone Computed Properties
 ============================
 
+[![Build Status](https://travis-ci.org/skaterdav85/backbone-computed-properties.svg?branch=master)](https://travis-ci.org/skaterdav85/backbone-computed-properties)
+
 Ember-style computed properties for Backbone models. This is very much a work in progress. Pull requests are welcome!
 
 ### Install
