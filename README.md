@@ -13,6 +13,12 @@ Grab _backbone-computed.js_ from the _src_ directory and include it on your page
 <script src="backbone-computed.js"></script>
 ```
 
+Or install through Bower
+
+```
+bower install backbone-computed-properties
+```
+
 ### Example
 
 ```js
