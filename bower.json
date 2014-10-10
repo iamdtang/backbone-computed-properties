@@ -1,0 +1,24 @@
+
+{
+  "name": "backbone-computed-properties",
+  "version": "0.0.1",
+  "homepage": "https://github.com/skaterdav85/backbone-computed-properties",
+  "authors": [
+    "David Tang"
+  ],
+  "description": "Ember-style computed properties for Backbone Models",
+  "main": "src/backbone-computed.js",
+  "keywords": [
+    "ember", "ember.js", "backbone", "backbone.js", "computed", "computed properties"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "karma.conf.js",
+    ".gitignore",
+    ".travis.yml",
+    "bower_components",
+    "tests",
+    "lib"
+  ]
+}
