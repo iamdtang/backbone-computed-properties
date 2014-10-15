@@ -28,11 +28,13 @@
 		var prototype = Object.getPrototypeOf(this);
 
 		for (var key in prototype) {
-			prototypeMember = prototype[key];
+			if (prototype.hasOwnProperty(key)) {
+				prototypeMember = prototype[key];
 
-			if (prototypeMember instanceof Backbone.Computed) {
-				this.set(key, prototypeMember.computedFunction.call(this));
-				this._setupComputedPropertyBindings(key, prototypeMember);
+				if (prototypeMember instanceof Backbone.Computed) {
+					this.set(key, prototypeMember.computedFunction.call(this));
+					this._setupComputedPropertyBindings(key, prototypeMember);
+				}
 			}
 		}
 	};
@@ -44,6 +46,7 @@
 		});
 
 		var depEventString = dep.join(' ');
+		
 		this.on(depEventString, function() {
 			var newValue = backboneComputed.computedFunction.call(self);
 			self.set(computedPropertyName, newValue);
