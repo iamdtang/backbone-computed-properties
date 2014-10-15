@@ -4,8 +4,13 @@
   "dependencies": {
     "karma": "~0.12.16",
     "karma-growl-notifications-reporter": "0.0.2",
-    "karma-jasmine": "^0.1.5",
-    "karma-phantomjs-launcher": "~0.1.4"
+    "karma-phantomjs-launcher": "~0.1.4",
+    "mocha": "~1.21.5",
+    "karma-mocha": "~0.1.9",
+    "chai": "~1.9.2",
+    "karma-chai": "~0.1.0",
+    "sinon": "~1.10.3",
+    "karma-sinon": "~1.0.3"
   },
   "version": "0.0.1",
   "main": "karma.conf.js",

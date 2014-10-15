@@ -16,14 +16,14 @@ describe('Backbone.Computed', function() {
   });
 
   it('should compute when the object is constructed', function() {
-    expect(david.get('fullName')).toEqual('David Tang');
+    expect(david.get('fullName')).to.equal('David Tang');
   });
 
   it('should update when the dependent properties change', function() {
     david.set({ last: 'Doe' });
-    expect(david.get('fullName')).toEqual('David Doe');
+    expect(david.get('fullName')).to.equal('David Doe');
     david.set({ first: 'David', last: 'Tang' });
-    expect(david.get('fullName')).toEqual('David Tang');
+    expect(david.get('fullName')).to.equal('David Tang');
   });
 
   it('should allow computed properties to depend on other computed properties', function() {
@@ -42,8 +42,8 @@ describe('Backbone.Computed', function() {
       last: 'Tang'
     });
 
-    expect(david.get('username')).toEqual('davidtang');
+    expect(david.get('username')).to.equal('davidtang');
     david.set({ last: 'Doe' });
-    expect(david.get('username')).toEqual('daviddoe');
+    expect(david.get('username')).to.equal('daviddoe');
   });
 });
