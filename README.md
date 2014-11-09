@@ -5,6 +5,12 @@ Backbone Computed Properties
 
 Ember-style computed properties for Backbone models. This is very much a work in progress. Pull requests are welcome!
 
+### Why Computed Properties?
+
+Computed properties let you declare functions as properties. It's super handy for taking one or more normal properties and transforming or manipulating their data to create a new value. 
+
+For example, imagine you have a Product model with _price_ and _discountprice_ properties. In your template, you need to determine if _discountprice_ is less than _price_, and if so, show _price_ striked out and _discountprice_ beneath it. Having this conditional logic in a template can be messy, and impossible depending on the client-side templating library you are using. Instead, it would be useful to have a property called _hasDiscount_ that is automatically computed from _price_ and _discountprice_ and recomputes whenever those properties change.
+
 ### Install
 
 Grab _backbone-computed.js_ from the _src_ directory and include it on your page.
@@ -71,7 +77,7 @@ david.set({ last: 'Doe' });
 david.get('username')); // daviddoe
 ```
 
-### Tests
+### Unit Tests
 
 Install karma and bower.
 
