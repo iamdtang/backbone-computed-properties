@@ -1,5 +1,5 @@
 {
-  "name": "Backbone-Computed-Properties",
+  "name": "backbone-computed-properties",
   "description": "Ember style computed properties for Backbone Models",
   "dependencies": {
     "karma": "~0.12.16",
