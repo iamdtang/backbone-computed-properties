@@ -2,6 +2,8 @@
   "name": "backbone-computed-properties",
   "description": "Ember style computed properties for Backbone Models",
   "author": "David <dtang859@gmail.com>",
+  "version": "0.0.5",
+  "main": "./src/backbone-computed.js",
   "dependencies": {
     "karma": "~0.12.16",
     "karma-growl-notifications-reporter": "0.0.2",
@@ -11,10 +13,11 @@
     "chai": "~1.9.2",
     "karma-chai": "~0.1.0",
     "sinon": "~1.10.3",
-    "karma-sinon": "~1.0.3"
+    "karma-sinon": "~1.0.3",
+    "gulp": "~3.8.10",
+    "gulp-uglify": "~1.0.1",
+    "gulp-concat": "~2.4.1"
   },
-  "version": "0.0.4",
-  "main": "./src/backbone-computed.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
   },

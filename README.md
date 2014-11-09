@@ -7,7 +7,7 @@ Ember-style computed properties for Backbone models. This is very much a work in
 
 ### Install
 
-Grab _backbone-computed.js_ from the _src_ directory and include it on your page.
+Grab _backbone-computed.min.js_ from the _dist_ directory and include it on your page.
 
 ```html
 <script src="backbone-computed.js"></script>
