@@ -1,6 +1,7 @@
 {
   "name": "backbone-computed-properties",
   "description": "Ember style computed properties for Backbone Models",
+  "author": "David <dtang859@gmail.com>",
   "dependencies": {
     "karma": "~0.12.16",
     "karma-growl-notifications-reporter": "0.0.2",
@@ -13,10 +14,10 @@
     "karma-sinon": "~1.0.3"
   },
   "version": "0.0.3",
-  "main": "karma.conf.js",
+  "main": "./src/backbone-computed.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
   },
-  "author": "David Tang",
+  "readmeFilename": "README.md",
   "license": "MIT"
 }

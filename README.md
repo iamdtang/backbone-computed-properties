@@ -19,6 +19,12 @@ Or install through Bower
 bower install backbone-computed-properties
 ```
 
+Or install through NPM
+
+```
+npm install backbone-computed-properties
+```
+
 ### Example
 
 ```js
