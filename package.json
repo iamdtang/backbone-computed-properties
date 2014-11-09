@@ -13,7 +13,7 @@
     "sinon": "~1.10.3",
     "karma-sinon": "~1.0.3"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./src/backbone-computed.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
