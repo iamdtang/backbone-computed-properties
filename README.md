@@ -45,6 +45,7 @@ var david = new Person({
   last: 'Tang'
 });
 
+david.toJSON(); // { first: 'David', last: 'Tang', fullName: 'David Tang' }
 david.get('fullName'); // David Tang
 david.set({ last: 'Doe' });
 david.get('fullName'); // David Doe
