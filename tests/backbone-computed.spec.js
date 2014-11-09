@@ -46,4 +46,21 @@ describe('Backbone.Computed', function() {
     david.set({ last: 'Doe' });
     expect(david.get('username')).to.equal('daviddoe');
   });
+
+  it('should not set up any listeners if there are no dependent properties', function() {
+    var spy = sinon.spy(Backbone.Model.prototype, 'on');
+
+    Person = Backbone.Model.extend({
+      createdAt: Backbone.Computed(function() {
+        return new Date();
+      })
+    });
+
+    david = new Person({
+      first: 'David',
+      last: 'Tang'
+    });
+
+    expect(spy.callCount).to.equal(0);
+  });
 });

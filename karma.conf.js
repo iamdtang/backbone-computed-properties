@@ -7,7 +7,7 @@ module.exports = function(config) {
         preprocessors: {},
 
         // frameworks to use
-        frameworks: ['mocha', 'chai'],
+        frameworks: ['mocha', 'chai', 'sinon'],
 
 
         // list of files / patterns to load in the browser

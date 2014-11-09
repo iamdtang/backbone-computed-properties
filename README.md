@@ -64,3 +64,13 @@ david.get('username'); // davidtang
 david.set({ last: 'Doe' });
 david.get('username')); // daviddoe
 ```
+
+### Tests
+
+Install karma and bower.
+
+```
+bower install
+npm install
+karma start
+```

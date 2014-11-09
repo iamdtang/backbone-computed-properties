@@ -12,7 +12,7 @@
     "sinon": "~1.10.3",
     "karma-sinon": "~1.0.3"
   },
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "karma.conf.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"

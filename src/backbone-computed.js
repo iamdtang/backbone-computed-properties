@@ -41,16 +41,20 @@
 
 	Backbone.Model.prototype._setupComputedPropertyBindings = function(computedPropertyName, backboneComputed) {
 		var self = this;
-		var dep = backboneComputed.getDependentProperties().map(function(prop) {
-			return 'change:' + prop;
-		});
+		var dependentProperties = backboneComputed.getDependentProperties();
 
-		var depEventString = dep.join(' ');
-		
-		this.on(depEventString, function() {
-			var newValue = backboneComputed.computedFunction.call(self);
-			self.set(computedPropertyName, newValue);
-		}, this);
+		if (dependentProperties.length > 0) {
+			var dep = dependentProperties.map(function(prop) {
+				return 'change:' + prop;
+			});
+
+			var depEventString = dep.join(' ');
+			
+			this.on(depEventString, function() {
+				var newValue = backboneComputed.computedFunction.call(self);
+				self.set(computedPropertyName, newValue);
+			}, this);
+		}
 	};
 
 })(Backbone);
