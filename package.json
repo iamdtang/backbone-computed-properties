@@ -1,6 +1,6 @@
 {
   "name": "backbone-computed-properties",
-  "description": "Ember style computed properties for Backbone Models",
+  "description": "Ember style computed properties for Backbone.js Models",
   "author": "David <dtang859@gmail.com>",
   "version": "0.0.7",
   "main": "./src/backbone-computed.js",
