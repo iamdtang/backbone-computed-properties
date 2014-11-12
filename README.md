@@ -101,3 +101,9 @@ bower install
 npm install
 karma start
 ```
+
+### Build
+
+```
+gulp
+```
