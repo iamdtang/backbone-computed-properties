@@ -1,11 +1,11 @@
 {
   "name": "backbone-computed-properties",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "homepage": "https://github.com/skaterdav85/backbone-computed-properties",
   "authors": [
     "David Tang"
   ],
-  "description": "Ember-style computed properties for Backbone Models",
+  "description": "Ember-style computed properties for Backbone.js Models",
   "main": "dist/backbone-computed.min.js",
   "keywords": [
     "ember", "ember.js", "backbone", "backbone.js", "computed", "computed properties"
