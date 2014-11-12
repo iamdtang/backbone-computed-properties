@@ -2,7 +2,7 @@
   "name": "backbone-computed-properties",
   "description": "Ember style computed properties for Backbone Models",
   "author": "David <dtang859@gmail.com>",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "./src/backbone-computed.js",
   "dependencies": {
     "karma": "~0.12.16",

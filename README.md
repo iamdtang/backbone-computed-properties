@@ -9,9 +9,21 @@ Ember-style computed properties for Backbone models. This is very much a work in
 
 Computed properties let you declare functions as properties. It's super handy for taking one or more normal properties and transforming or manipulating their data to create a new value. 
 
-For example, imagine you have a Product model with _price_ and _discountprice_ properties. In your template, you need to determine if _discountprice_ is less than _price_, and if so, show _price_ striked out and _discountprice_ beneath it. Having this conditional logic in a template can be messy, and impossible depending on the client-side templating library you are using. Instead, it would be useful to have a property called _hasDiscount_ that is automatically computed from _price_ and _discountprice_ and recomputes whenever those properties change. Then, the conditional logic in your template becomes much simpler and achievable even with the most minimal logicless templates.
+You can achieve computed properties now in Backbone with observers in your model's _initialize()_ method, but if you have too many, it can get quite messy.
 
-You can achieve computed properties now in Backbone with event bindings in your model's initialize() method, but if you have too many, it can get quite messy. I really liked Ember's approach so I created this library.
+```js
+Backbone.Model.extend({
+	initialize: function() {
+  		this.computeHasDiscount();
+		this.on('change:price change:discountprice', this.computeHasDiscount, this);
+
+		// could have more here ...
+	},
+		
+	computeHasDiscount: function() { /* implementation */ }
+});
+```
+In this example, I have only set up 1 computed property using the base Backbone features, but what if I have more than 1? Our initialize method can get really long and quite messy. So instead of using this approach, I decided to create a computed property library for Backbone with an API like that of Ember's computed properties.
 
 ### Install
 
@@ -33,7 +45,7 @@ Or install through NPM
 npm install backbone-computed-properties
 ```
 
-### Example
+### Basic Example
 
 ```js
 var Person = Backbone.Model.extend({

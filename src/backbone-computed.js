@@ -19,11 +19,11 @@
 	Backbone.Model = OriginalBackboneModel.extend({
 		constructor: function() {
 			OriginalBackboneModel.apply(this, arguments);
-			this._initializeComputedProperties();
+			initializeComputedProperties.call(this);
 		}
 	});
 
-	Backbone.Model.prototype._initializeComputedProperties = function() {
+	function initializeComputedProperties() {
 		var prototypeMember;
 		var prototype = Object.getPrototypeOf(this);
 
@@ -33,13 +33,13 @@
 
 				if (prototypeMember instanceof Backbone.Computed) {
 					this.set(key, prototypeMember.computedFunction.call(this));
-					this._setupComputedPropertyBindings(key, prototypeMember);
+					setupComputedPropertyBindings.call(this, key, prototypeMember);
 				}
 			}
 		}
-	};
+	}
 
-	Backbone.Model.prototype._setupComputedPropertyBindings = function(computedPropertyName, backboneComputed) {
+	function setupComputedPropertyBindings(computedPropertyName, backboneComputed) {
 		var self = this;
 		var dependentProperties = backboneComputed.getDependentProperties();
 
@@ -55,6 +55,6 @@
 				self.set(computedPropertyName, newValue);
 			}, this);
 		}
-	};
+	}
 
 })(Backbone);
