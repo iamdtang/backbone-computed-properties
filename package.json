@@ -2,8 +2,18 @@
   "name": "backbone-computed-properties",
   "description": "Ember style computed properties for Backbone.js Models",
   "author": "David <dtang859@gmail.com>",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "./src/backbone-computed.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skaterdav85/backbone-computed-properties"
+  },
+  "bugs": {
+    "url": "https://github.com/skaterdav85/backbone-computed-properties/issues"
+  },
+  "keywords": [
+    "ember", "ember.js", "backbone", "backbone.js", "computed", "computed properties"
+  ],
   "devDependencies": {
     "karma": "~0.12.16",
     "karma-growl-notifications-reporter": "0.0.2",
