@@ -5,26 +5,6 @@ Backbone Computed Properties
 
 Ember-style computed properties for Backbone models. This is very much a work in progress. Pull requests are welcome!
 
-### Why Computed Properties?
-
-Computed properties let you declare functions as properties. It's super handy for taking one or more normal properties and transforming or manipulating their data to create a new value. 
-
-You can achieve computed properties now in Backbone with observers in your model's _initialize()_ method, but if you have too many, it can get quite messy.
-
-```js
-Backbone.Model.extend({
-	initialize: function() {
-  		this.computeHasDiscount();
-		this.on('change:price change:discountprice', this.computeHasDiscount, this);
-
-		// could have more here ...
-	},
-		
-	computeHasDiscount: function() { /* implementation */ }
-});
-```
-In this example, I have only set up 1 computed property using the base Backbone features, but what if I have more than 1? Our initialize method can get really long and quite messy. So instead of using this approach, I decided to create a computed property library for Backbone with an API like that of Ember's computed properties.
-
 ### Install
 
 Grab _backbone-computed.min.js_ from the _dist_ directory and include it on your page.
@@ -44,6 +24,26 @@ Or install through NPM
 ```
 npm install backbone-computed-properties
 ```
+
+### Why Computed Properties?
+
+Computed properties let you declare functions as properties. It's super handy for taking one or more normal properties and transforming or manipulating their data to create a new value. 
+
+You can achieve computed properties now in Backbone with observers in your model's _initialize()_ method.
+
+```js
+Backbone.Model.extend({
+	initialize: function() {
+  		this.computeHasDiscount();
+		this.on('change:price change:discountprice', this.computeHasDiscount, this);
+
+		// could have more here ...
+	},
+		
+	computeHasDiscount: function() { /* implementation */ }
+});
+```
+In the example above, I have only set up 1 computed property using the base Backbone features. If I had more than 1, the initialize method could get really long and quite messy. Instead of using this approach, I decided to create a computed property library for Backbone with an API like that of Ember's computed properties.
 
 ### Basic Example
 
