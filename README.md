@@ -94,7 +94,7 @@ david.get('username')); // daviddoe
 
 ### Unit Tests
 
-Unit tests are written using Mocha and Chai. Install karma and bower and then start karma.
+Unit tests are written using Mocha, Chai, and Sinon. Install karma and bower and then start karma.
 
 ```
 bower install
