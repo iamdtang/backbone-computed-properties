@@ -10,7 +10,7 @@ Ember-style computed properties for Backbone models. This is very much a work in
 Grab _backbone-computed.min.js_ from the _dist_ directory and include it on your page.
 
 ```html
-<script src="backbone-computed.js"></script>
+<script src="backbone-computed.min.js"></script>
 ```
 
 Or install through Bower
@@ -103,6 +103,8 @@ karma start
 ```
 
 ### Build
+
+The build process will create a minified version and place it in the _dist_ directory.
 
 ```
 gulp
