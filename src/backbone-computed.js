@@ -24,25 +24,47 @@
 	});
 
 	var ComputedPropertySetup = function(model, property, propertyName) {
-		var dependentProperties = property.getDependentProperties();
-
 		var computeValue = function() {
 			model.set(propertyName, property.computedFunction.call(model));
 		};
 
-		var eventsToListen = function() {
-			return dependentProperties.map(function(propertyName) {
+		var dependentProperties = _.memoize(function() {
+			return  _.filter(property.getDependentProperties(), function(property) {
+				return property.indexOf('event:') < 0;
+			});
+		});
+
+		var dependentEvents = _.memoize(function() {
+			return _.chain(property.getDependentProperties()).
+				filter(function(property) {
+					return property.indexOf('event:') === 0;
+				}).
+				map(function(property) {
+					return property.replace('event:', '');
+				}).
+				value();
+		});
+
+		var propertiesEventsToListen = function() {
+			return dependentProperties().map(function(propertyName) {
 				return 'change:' + propertyName;
 			});
 		};
 
-		var attachListeners = function() {
-			if (!dependentProperties.length) { return; }
-			var eventString = eventsToListen().join(' ');
+		var attachDependentPropertiesListeners = function() {
+			if (!dependentProperties().length) { return; }
+			var eventString = propertiesEventsToListen().join(' ');
 			model.on(eventString, computeValue);
 		};
 
-		attachListeners();
+		var attachDependentEventsListeners = function() {
+			if (!dependentEvents().length) { return; }
+			var eventString = dependentEvents().join(' ');
+			model.on(eventString, computeValue);
+		};
+
+		attachDependentPropertiesListeners();
+		attachDependentEventsListeners();
 		computeValue();
 	};
 

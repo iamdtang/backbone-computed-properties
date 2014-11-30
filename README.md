@@ -27,7 +27,7 @@ npm install backbone-computed-properties
 
 ### Why Computed Properties?
 
-Computed properties let you declare functions as properties. It's super handy for taking one or more normal properties and transforming or manipulating their data to create a new value. 
+Computed properties let you declare functions as properties. It's super handy for taking one or more normal properties and transforming or manipulating their data to create a new value.
 
 You can achieve computed properties now in Backbone with observers in your model's _initialize()_ method.
 
@@ -39,7 +39,7 @@ Backbone.Model.extend({
 
 		// could have more here ...
 	},
-		
+
 	computeHasDiscount: function() { /* implementation */ }
 });
 ```
@@ -65,6 +65,16 @@ david.set({ last: 'Doe' });
 david.get('fullName'); // David Doe
 david.set({ first: 'David', last: 'Tang' });
 david.get('fullName'); // David Tang
+```
+
+You can also set up computed properties that relies on model events using the prefix **event:**, example:
+
+```js
+Person = Backbone.Model.extend({
+  syncCount: Backbone.Computed('event:sync', function() {
+    return this.get('syncCount') + 1;
+  })
+});
 ```
 
 ### Chaining Computed Properties

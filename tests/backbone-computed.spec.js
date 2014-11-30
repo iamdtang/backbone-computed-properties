@@ -63,4 +63,21 @@ describe('Backbone.Computed', function() {
 
     expect(spy.callCount).to.equal(0);
   });
+
+  it('should allow computed properties to depend on a model event', function() {
+    Person = Backbone.Model.extend({
+      syncCount: Backbone.Computed('event:sync', function() {
+       if (_.isUndefined(this.get('syncCount'))) {
+         return 0;
+       } else {
+         return this.get('syncCount') + 1;
+       };
+      })
+    });
+
+    david = new Person();
+    expect(david.get('syncCount')).to.equal(0);
+    david.trigger('sync');
+    expect(david.get('syncCount')).to.equal(1);
+  });
 });
