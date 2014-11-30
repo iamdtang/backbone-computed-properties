@@ -23,6 +23,29 @@
 		}
 	});
 
+	var ComputedPropertySetup = function(model, property, propertyName) {
+		var dependentProperties = property.getDependentProperties();
+
+		var computeValue = function() {
+			model.set(propertyName, property.computedFunction.call(model));
+		};
+
+		var eventsToListen = function() {
+			return dependentProperties.map(function(propertyName) {
+				return 'change:' + propertyName;
+			});
+		};
+
+		var attachListeners = function() {
+			if (!dependentProperties.length) { return; }
+			var eventString = eventsToListen().join(' ');
+			model.on(eventString, computeValue);
+		};
+
+		attachListeners();
+		computeValue();
+	};
+
 	function initializeComputedProperties() {
 		var prototypeMember;
 		var prototype = Object.getPrototypeOf(this);
@@ -32,28 +55,9 @@
 				prototypeMember = prototype[key];
 
 				if (prototypeMember instanceof Backbone.Computed) {
-					this.set(key, prototypeMember.computedFunction.call(this));
-					setupComputedPropertyBindings.call(this, key, prototypeMember);
+					ComputedPropertySetup(this, prototypeMember, key);
 				}
 			}
-		}
-	}
-
-	function setupComputedPropertyBindings(computedPropertyName, backboneComputed) {
-		var self = this;
-		var dependentProperties = backboneComputed.getDependentProperties();
-
-		if (dependentProperties.length > 0) {
-			var dep = dependentProperties.map(function(prop) {
-				return 'change:' + prop;
-			});
-
-			var depEventString = dep.join(' ');
-			
-			this.on(depEventString, function() {
-				var newValue = backboneComputed.computedFunction.call(self);
-				self.set(computedPropertyName, newValue);
-			}, this);
 		}
 	}
 
