@@ -23,6 +23,51 @@
 		}
 	});
 
+	var ComputedPropertySetup = function(model, property, propertyName) {
+		var computeValue = function() {
+			model.set(propertyName, property.computedFunction.call(model));
+		};
+
+		var dependentProperties = _.memoize(function() {
+			return  _.filter(property.getDependentProperties(), function(property) {
+				return property.indexOf('event:') < 0;
+			});
+		});
+
+		var dependentEvents = _.memoize(function() {
+			return _.chain(property.getDependentProperties()).
+				filter(function(property) {
+					return property.indexOf('event:') === 0;
+				}).
+				map(function(property) {
+					return property.replace('event:', '');
+				}).
+				value();
+		});
+
+		var propertiesEventsToListen = function() {
+			return dependentProperties().map(function(propertyName) {
+				return 'change:' + propertyName;
+			});
+		};
+
+		var attachDependentPropertiesListeners = function() {
+			if (!dependentProperties().length) { return; }
+			var eventString = propertiesEventsToListen().join(' ');
+			model.on(eventString, computeValue);
+		};
+
+		var attachDependentEventsListeners = function() {
+			if (!dependentEvents().length) { return; }
+			var eventString = dependentEvents().join(' ');
+			model.on(eventString, computeValue);
+		};
+
+		attachDependentPropertiesListeners();
+		attachDependentEventsListeners();
+		computeValue();
+	};
+
 	function initializeComputedProperties() {
 		var prototypeMember;
 		var prototype = Object.getPrototypeOf(this);
@@ -32,28 +77,9 @@
 				prototypeMember = prototype[key];
 
 				if (prototypeMember instanceof Backbone.Computed) {
-					this.set(key, prototypeMember.computedFunction.call(this));
-					setupComputedPropertyBindings.call(this, key, prototypeMember);
+					ComputedPropertySetup(this, prototypeMember, key);
 				}
 			}
-		}
-	}
-
-	function setupComputedPropertyBindings(computedPropertyName, backboneComputed) {
-		var self = this;
-		var dependentProperties = backboneComputed.getDependentProperties();
-
-		if (dependentProperties.length > 0) {
-			var dep = dependentProperties.map(function(prop) {
-				return 'change:' + prop;
-			});
-
-			var depEventString = dep.join(' ');
-			
-			this.on(depEventString, function() {
-				var newValue = backboneComputed.computedFunction.call(self);
-				self.set(computedPropertyName, newValue);
-			}, this);
 		}
 	}
 
