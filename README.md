@@ -67,7 +67,7 @@ david.set({ first: 'David', last: 'Tang' });
 david.get('fullName'); // David Tang
 ```
 
-You can also set up computed properties that relies on model events using the prefix **event:**, example:
+You can also set up computed properties that rely on model events using the prefix **event:**.  For example:
 
 ```js
 Person = Backbone.Model.extend({
