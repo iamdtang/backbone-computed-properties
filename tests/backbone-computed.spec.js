@@ -26,6 +26,13 @@ describe('Backbone.Computed', function() {
     expect(david.get('fullName')).to.equal('David Tang');
   });
 
+  it('should fire a change event when the computed property changes', function() {
+    var spy = sinon.spy();
+    david.on('change:fullName', spy);
+    david.set({ last: 'Doe' });
+    expect(spy.callCount).to.equal(1);
+  });
+
   it('should allow computed properties to depend on other computed properties', function() {
     Person = Backbone.Model.extend({
       fullName: Backbone.Computed('first', 'last', function() {
