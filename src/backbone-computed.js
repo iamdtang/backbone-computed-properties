@@ -70,7 +70,7 @@
 
 	function initializeComputedProperties() {
 		var prototypeMember;
-		var prototype = Object.getPrototypeOf(this);
+		var prototype = _.extend({}, Object.getPrototypeOf(this), this.constructor.__super__);
 
 		for (var key in prototype) {
 			if (prototype.hasOwnProperty(key)) {

@@ -54,6 +54,19 @@ describe('Backbone.Computed', function() {
     expect(david.get('username')).to.equal('daviddoe');
   });
 
+  it('should works on extend models', function() {
+    ExtendPerson = Person.extend();
+
+    david = new ExtendPerson({
+      first: 'David',
+      last: 'Tang'
+    });
+
+    expect(david.get('fullName')).to.equal('David Tang');
+    david.set({ last: 'Doe' });
+    expect(david.get('fullName')).to.equal('David Doe');
+  });
+
   it('should not set up any listeners if there are no dependent properties', function() {
     var spy = sinon.spy(Backbone.Model.prototype, 'on');
 
