@@ -1,4 +1,11 @@
-(function(Backbone) {
+(function() {
+	var Backbone;
+
+	if (typeof exports !== 'undefined') {
+		Backbone = require('backbone');
+	} else {
+		Backbone = window.Backbone;
+	}
 
 	Backbone.Computed = function(args) {
 		if (this instanceof Backbone.Computed) {
@@ -83,4 +90,8 @@
 		}
 	}
 
-})(Backbone);
+	if (typeof exports !== 'undefined') {
+		module.exports = Backbone.Computed;
+	}
+
+})();

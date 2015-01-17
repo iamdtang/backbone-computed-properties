@@ -2,7 +2,7 @@
   "name": "backbone-computed-properties",
   "description": "Ember style computed properties for Backbone.js Models",
   "author": "David <dtang859@gmail.com>",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./src/backbone-computed.js",
   "repository": {
     "type": "git",
@@ -12,25 +12,34 @@
     "url": "https://github.com/skaterdav85/backbone-computed-properties/issues"
   },
   "keywords": [
-    "ember", "ember.js", "backbone", "backbone.js", "computed", "computed properties"
+    "ember",
+    "ember.js",
+    "backbone",
+    "backbone.js",
+    "computed",
+    "computed properties"
   ],
   "devDependencies": {
-    "karma": "~0.12.16",
-    "karma-growl-notifications-reporter": "0.0.2",
-    "karma-phantomjs-launcher": "~0.1.4",
-    "mocha": "~1.21.5",
-    "karma-mocha": "~0.1.9",
     "chai": "~1.9.2",
-    "karma-chai": "~0.1.0",
-    "sinon": "~1.10.3",
-    "karma-sinon": "~1.0.3",
     "gulp": "~3.8.10",
+    "gulp-concat": "~2.4.1",
     "gulp-uglify": "~1.0.1",
-    "gulp-concat": "~2.4.1"
+    "karma": "~0.12.16",
+    "karma-browserify": "^2.0.0",
+    "karma-chai": "~0.1.0",
+    "karma-growl-notifications-reporter": "0.0.2",
+    "karma-mocha": "~0.1.9",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "karma-sinon": "~1.0.3",
+    "mocha": "~1.21.5",
+    "sinon": "~1.10.3"
   },
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
   },
   "readmeFilename": "README.md",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "backbone": "^1.1.2"
+  }
 }

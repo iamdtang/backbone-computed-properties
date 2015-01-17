@@ -25,6 +25,14 @@ Or install through NPM
 npm install backbone-computed-properties
 ```
 
+You can also use this with Browserify.
+
+```
+var Computed = require('./../src/backbone-computed');
+```
+
+Once you do that, you can either use `Computed` or `Backbone.Computed`.
+
 ### Why Computed Properties?
 
 Computed properties let you declare functions as properties. It's super handy for taking one or more normal properties and transforming or manipulating their data to create a new value.
