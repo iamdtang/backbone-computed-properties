@@ -1,3 +1,7 @@
+#### 0.2.2
+
+* fixes bug where Backbone.Computed only worked in Karma but not in a standalone Browserify project
+
 #### 0.2.1
 
 * documentation

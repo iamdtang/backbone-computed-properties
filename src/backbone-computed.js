@@ -1,10 +1,7 @@
 (function() {
-	var Backbone;
-
 	if (typeof exports !== 'undefined') {
+		_ = require('underscore');
 		Backbone = require('backbone');
-	} else {
-		Backbone = window.Backbone;
 	}
 
 	Backbone.Computed = function(args) {
