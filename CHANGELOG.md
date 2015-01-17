@@ -1,3 +1,7 @@
+#### 0.2.1
+
+* documentation
+
 #### 0.2.0
 
 * CommonJS / Browserify support

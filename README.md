@@ -28,7 +28,7 @@ npm install backbone-computed-properties
 You can also use this with Browserify.
 
 ```
-var Computed = require('./../src/backbone-computed');
+var Computed = require('backbone-computed-properties');
 ```
 
 Once you do that, you can either use `Computed` or `Backbone.Computed`.
