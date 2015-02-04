@@ -1,9 +1,12 @@
-(function() {
-	if (typeof exports !== 'undefined') {
-		_ = require('underscore');
-		Backbone = require('backbone');
-	}
-
+(function(root, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(["backbone", "underscore"], factory);
+  } else if (typeof exports !== "undefined") {
+    return module.exports = factory(require("backbone"), require("underscore"));
+  } else {
+    factory(root.Backbone, root._);
+  }
+})(this, function(Backbone, _) {
 	Backbone.Computed = function(args) {
 		if (this instanceof Backbone.Computed) {
 			args = Array.prototype.slice.call(args, 0);
@@ -86,9 +89,6 @@
 			}
 		}
 	}
-
-	if (typeof exports !== 'undefined') {
-		module.exports = Backbone.Computed;
-	}
-
-})();
+	
+	return Backbone.Computed;
+});
