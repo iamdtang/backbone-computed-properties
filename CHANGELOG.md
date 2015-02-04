@@ -1,3 +1,7 @@
+#### 0.2.3
+
+* Loaders friendly "header". This "header" will works on normal script tag include, amd environments (like require.js) and CommonJS environments (like browserify).
+
 #### 0.2.2
 
 * fixes bug where Backbone.Computed only worked in Karma but not in a standalone Browserify project
