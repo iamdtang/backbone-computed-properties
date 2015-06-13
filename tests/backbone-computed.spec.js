@@ -108,6 +108,42 @@ describe('Backbone.computed', function() {
   });
 
 	describe("computed alias macro", function() {
+		it("should create an alias", function() {
+		  var Person = Backbone.Model.extend({
+				age: Backbone.computed.alias('theage')
+			});
 
+			var person = new Person({
+				theage: 66
+			});
+
+			expect(person.get('age')).to.equal(66);
+		});
+	});
+
+	describe("computed equal macro", function() {
+		var Person;
+
+		beforeEach(function() {
+			Person = Backbone.Model.extend({
+				napTime: Backbone.computed.equal('state', 'sleepy')
+			});
+		});
+
+		it("should be true if the property is equal to the value", function() {
+			var person = new Person({
+				state: 'sleepy'
+			});
+
+			expect(person.get('napTime')).to.equal(true);
+		});
+
+		it("should be false if the property is not equal to the value", function() {
+			var person = new Person({
+				state: 'hungry'
+			});
+
+			expect(person.get('napTime')).to.equal(false);
+		});
 	});
 });

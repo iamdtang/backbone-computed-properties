@@ -2,7 +2,7 @@
   "name": "backbone-computed-properties",
   "description": "Ember style computed properties for Backbone.js Models",
   "author": "David <dtang859@gmail.com>",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "main": "./src/backbone-computed.js",
   "repository": {
     "type": "git",

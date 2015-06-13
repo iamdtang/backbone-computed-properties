@@ -110,6 +110,42 @@ david.set({ last: 'Doe' });
 david.get('username')); // daviddoe
 ```
 
+### Macros
+
+#### alias(dependentKey)
+
+Creates a new property that is an alias for another property on an object.
+
+```js
+var Person = Backbone.Model.extend({
+	age: Backbone.computed.alias('theage')
+});
+
+var person = new Person({
+	theage: 66
+});
+
+person.get('age'); //66
+```
+
+#### equal(dependentKey, value)
+
+A computed property that returns true if the provided dependent property is equal to the given value.
+
+```js
+var Person = Backbone.Model.extend({
+	napTime: Backbone.computed.equal('state', 'sleepy')
+});
+
+var person = new Person({
+	state: 'sleepy'
+});
+
+person.get('napTime'); // true
+person.set('state', 'hungry');
+person.get('napTime'); // false
+```
+
 ### Unit Tests
 
 Unit tests are written using Mocha, Chai, and Sinon. Install karma and bower and then start karma.

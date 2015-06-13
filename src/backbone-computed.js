@@ -8,16 +8,16 @@
   }
 })(this, function(Backbone, _) {
 	Backbone.Computed = Backbone.computed = function(args) {
-		if (this instanceof Backbone.Computed) {
+		if (this instanceof Backbone.computed) {
 			args = Array.prototype.slice.call(args, 0);
 	    this.computedFunction = args[args.length - 1];
 	    this.dep = args.slice(0, -1);
 		} else {
-			return new Backbone.Computed(arguments);
+			return new Backbone.computed(arguments);
 		}
 	};
 
-	Backbone.Computed.prototype.getDependentProperties = function() {
+	Backbone.computed.prototype.getDependentProperties = function() {
 		return this.dep;
 	};
 
@@ -83,12 +83,24 @@
 			if (prototype.hasOwnProperty(key)) {
 				prototypeMember = prototype[key];
 
-				if (prototypeMember instanceof Backbone.Computed) {
+				if (prototypeMember instanceof Backbone.computed) {
 					ComputedPropertySetup(this, prototypeMember, key);
 				}
 			}
 		}
 	}
 
-	return Backbone.Computed;
+  Backbone.computed.alias = function(propertyToAlias) {
+    return Backbone.computed(propertyToAlias, function() {
+      return this.get(propertyToAlias);
+    });
+  };
+
+  Backbone.computed.equal = function(property, value) {
+    return Backbone.computed(property, function() {
+      return this.get(property) === value;
+    });
+  };
+
+	return Backbone.computed;
 });
