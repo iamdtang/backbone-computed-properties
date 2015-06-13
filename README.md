@@ -31,7 +31,7 @@ You can also use this with Browserify.
 var Computed = require('backbone-computed-properties');
 ```
 
-Once you do that, you can either use `Computed` or `Backbone.Computed`.
+Once you do that, you can either use `Computed` or `Backbone.computed`.
 
 ### Why Computed Properties?
 
@@ -57,7 +57,7 @@ In the example above, I have only set up 1 computed property using the base Back
 
 ```js
 var Person = Backbone.Model.extend({
-  fullName: Backbone.Computed('first', 'last', function() {
+  fullName: Backbone.computed('first', 'last', function() {
     return this.get('first') + ' ' + this.get('last');
   })
 });
@@ -79,7 +79,7 @@ You can also set up computed properties that rely on model events using the pref
 
 ```js
 Person = Backbone.Model.extend({
-  syncCount: Backbone.Computed('event:sync', function() {
+  syncCount: Backbone.computed('event:sync', function() {
     return this.get('syncCount') + 1;
   })
 });
@@ -91,11 +91,11 @@ You can use computed properties as values to create new computed properties. Let
 
 ```js
 var Person = Backbone.Model.extend({
-  fullName: Backbone.Computed('first', 'last', function() {
+  fullName: Backbone.computed('first', 'last', function() {
     return this.get('first') + ' ' + this.get('last');
   }),
 
-  username: Backbone.Computed('fullName', function() {
+  username: Backbone.computed('fullName', function() {
     return this.get('fullName').replace(/\s/g, '').toLowerCase();
   })
 });

@@ -1,10 +1,10 @@
-describe('Backbone.Computed', function() {
+describe('Backbone.computed', function() {
 	var Person;
   var david;
 
   beforeEach(function() {
     Person = Backbone.Model.extend({
-      fullName: Backbone.Computed('first', 'last', function() {
+      fullName: Backbone.computed('first', 'last', function() {
         return this.get('first') + ' ' + this.get('last');
       })
     });
@@ -14,6 +14,12 @@ describe('Backbone.Computed', function() {
       last: 'Tang'
     });
   });
+
+	describe("Backbone.computed", function() {
+	  it("should alias to Backbone.Computed for backwards compatibility", function() {
+	    expect(Backbone.computed).to.equal(Backbone.Computed);
+	  });
+	});
 
   it('should compute when the object is constructed', function() {
     expect(david.get('fullName')).to.equal('David Tang');
@@ -35,11 +41,11 @@ describe('Backbone.Computed', function() {
 
   it('should allow computed properties to depend on other computed properties', function() {
     Person = Backbone.Model.extend({
-      fullName: Backbone.Computed('first', 'last', function() {
+      fullName: Backbone.computed('first', 'last', function() {
         return this.get('first') + ' ' + this.get('last');
       }),
 
-      username: Backbone.Computed('fullName', function() {
+      username: Backbone.computed('fullName', function() {
         return this.get('fullName').replace(/\s/g, '').toLowerCase();
       })
     });
@@ -71,7 +77,7 @@ describe('Backbone.Computed', function() {
     var spy = sinon.spy(Backbone.Model.prototype, 'on');
 
     Person = Backbone.Model.extend({
-      createdAt: Backbone.Computed(function() {
+      createdAt: Backbone.computed(function() {
         return new Date();
       })
     });
@@ -86,7 +92,7 @@ describe('Backbone.Computed', function() {
 
   it('should allow computed properties to depend on a model event', function() {
     Person = Backbone.Model.extend({
-      syncCount: Backbone.Computed('event:sync', function() {
+      syncCount: Backbone.computed('event:sync', function() {
        if (_.isUndefined(this.get('syncCount'))) {
          return 0;
        } else {
@@ -100,4 +106,8 @@ describe('Backbone.Computed', function() {
     david.trigger('sync');
     expect(david.get('syncCount')).to.equal(1);
   });
+
+	describe("computed alias macro", function() {
+
+	});
 });

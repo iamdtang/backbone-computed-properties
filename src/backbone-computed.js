@@ -7,7 +7,7 @@
     factory(root.Backbone, root._);
   }
 })(this, function(Backbone, _) {
-	Backbone.Computed = function(args) {
+	Backbone.Computed = Backbone.computed = function(args) {
 		if (this instanceof Backbone.Computed) {
 			args = Array.prototype.slice.call(args, 0);
 	    this.computedFunction = args[args.length - 1];
@@ -89,6 +89,6 @@
 			}
 		}
 	}
-	
+
 	return Backbone.Computed;
 });
