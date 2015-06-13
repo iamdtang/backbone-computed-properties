@@ -9,7 +9,7 @@ describe('Backbone.Computed', function() {
 	describe('exports should work as Backbone.Computed', function() {
 		var Person;
 		var david;
-		
+
 		beforeEach(function() {
 	    Person = Backbone.Model.extend({
 	      fullName: Computed('first', 'last', function() {

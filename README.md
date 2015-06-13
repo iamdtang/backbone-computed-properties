@@ -115,6 +115,10 @@ david.get('username')); // daviddoe
 Unit tests are written using Mocha, Chai, and Sinon. Install karma and bower and then start karma.
 
 ```
+npm install -g bower
+npm install -g karma
+npm install -g browserify
+
 bower install
 npm install
 karma start
