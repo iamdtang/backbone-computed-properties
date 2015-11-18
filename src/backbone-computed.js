@@ -1,8 +1,8 @@
 (function(root, factory) {
-  if (typeof define === "function" && define.amd) {
-    define(["backbone", "underscore"], factory);
-  } else if (typeof exports !== "undefined") {
-    return module.exports = factory(require("backbone"), require("underscore"));
+  if (typeof define === 'function' && define.amd) {
+    define(['backbone', 'underscore'], factory);
+  } else if (typeof exports !== 'undefined') {
+    return module.exports = factory(require('backbone'), require('underscore'));
   } else {
     factory(root.Backbone, root._);
   }
@@ -42,14 +42,14 @@
     });
 
     var dependentEvents = _.memoize(function() {
-      return _.chain(property.getDependentProperties()).
-      filter(function(property) {
-        return property.indexOf('event:') === 0;
-      }).
-      map(function(property) {
-        return property.replace('event:', '');
-      }).
-      value();
+      return _.chain(property.getDependentProperties())
+        .filter(function(property) {
+          return property.indexOf('event:') === 0;
+        })
+        .map(function(property) {
+          return property.replace('event:', '');
+        })
+        .value();
     });
 
     var propertiesEventsToListen = function() {
@@ -59,18 +59,22 @@
     };
 
     var attachDependentPropertiesListeners = function() {
+      var eventString;
+
       if (!dependentProperties().length) {
         return;
       }
-      var eventString = propertiesEventsToListen().join(' ');
+      eventString = propertiesEventsToListen().join(' ');
       model.on(eventString, computeValue);
     };
 
     var attachDependentEventsListeners = function() {
+      var eventString;
+
       if (!dependentEvents().length) {
         return;
       }
-      var eventString = dependentEvents().join(' ');
+      eventString = dependentEvents().join(' ');
       model.on(eventString, computeValue);
     };
 
