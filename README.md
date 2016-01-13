@@ -85,6 +85,9 @@ Person = Backbone.Model.extend({
 });
 ```
 
+Computed properties will also trigger custom change events (e.g., `fullName`
+fires `change:fullName`).
+
 ### Chaining Computed Properties
 
 You can use computed properties as values to create new computed properties. Let's add a _username_ computed property to the previous example, and use the existing _fullName_ computed property:
